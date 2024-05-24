@@ -49,7 +49,7 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
   return (
     <Container>
       <Card>
-        <CardMedia component="img" style={{ width: "25vw" }} image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+        <CardMedia component="img"  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
         <CardContent>
           <Typography variant="h6">{movie.title}</Typography>
           <Typography variant="body1">Rating: {movie.vote_average}</Typography>
@@ -57,7 +57,7 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
           <Typography variant="body1">Harga: Rp. {moviePrice(movie.vote_average)}</Typography>
           {!ownedMoviesId.includes(movie.id) ? (
             <Button onClick={handleBuy} variant="contained" color="primary">
-              Beli - Rp. {moviePrice(movie.vote_average)}
+              Buy - Rp. {moviePrice(movie.vote_average)}
             </Button>
           ) : (
             <Typography variant="h6">Successfully owned✅</Typography>
