@@ -15,6 +15,10 @@ function MovieList() {
     loadMovies()
   }, [page]);
 
+  function loadMoreMovies() {
+    setPage((prevPage) => (prevPage + 1))
+  }
+
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
