@@ -27,7 +27,7 @@ function MovieList() {
       </Typography>
       <Grid container spacing={4}>
         {movies.map((movie) => (
-          <Grid item key={movie.id}>
+          <Grid item key={movie.id} xs={12} sm={6} md={3}>
             <Card>
               <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
             </Card>
