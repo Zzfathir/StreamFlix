@@ -1,6 +1,7 @@
-import { Container, Typography } from "@mui/material";
+import { Container, Grid, Card, CardMedia, CardContent, Typography, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { fetchNowPlayingMovies } from "../services/api";
+import { Link } from 'react-router-dom';
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -12,11 +13,11 @@ function MovieList() {
       setMovies((prevMovies) => [...prevMovies, ...newMovies]);
     }
 
-    loadMovies()
+    loadMovies();
   }, [page]);
 
   function loadMoreMovies() {
-    setPage((prevPage) => (prevPage + 1))
+    setPage((prevPage) => prevPage + 1);
   }
 
   return (
@@ -24,7 +25,17 @@ function MovieList() {
       <Typography variant="h4" gutterBottom>
         On going Film
       </Typography>
-      <Grid container spacing={4}></Grid>
+      <Grid container spacing={4}>
+        {movies.map((movie) => (
+          <Grid item key={movie.id}>
+            <Card>
+              <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 }
+
+export default MovieList;
