@@ -7,4 +7,9 @@ export async function fetchNowPlayingMovies(page = 1) {
   return data.results;
 }
 
+export async function fetchMovieDetail (movieId) {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=id-ID`);
+    const data = await response.json();
+    return data;
+  };
 
