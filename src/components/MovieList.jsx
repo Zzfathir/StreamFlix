@@ -33,24 +33,29 @@ function MovieList() {
   }
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom>
-        On going Film
+    <Container style={{ margin: '20px' }}>
+      <Typography fontWeight="bold" variant="h4" gutterBottom>
+      ON GOING
       </Typography>
       <Grid container spacing={4}>
         {movies.map((movie) => (
           <Grid item key={movie.id} xs={12} sm={6} md={3}>
             <Card>
               <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
-              <CardContent>
-                <Typography variant="h6">{movie.title}</Typography>
+              <CardContent >
+                <Typography fontWeight='bold' variant="div">{movie.title}</Typography>
                 <Typography variant="body2">Price: Rp. {moviePrice(movie.vote_average)}</Typography>
-                <Button component={Link}>Detail</Button>
+                <Button size="medium" color="secondary" variant="contained" component={Link}>
+                  See Detail
+                </Button>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
+      <Button onClick={loadMoreMovies} variant="contained" color="primary" style={{ marginTop: '20px' }}>
+        Load More
+      </Button>
     </Container>
   );
 }
