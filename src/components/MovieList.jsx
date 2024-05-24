@@ -30,6 +30,11 @@ function MovieList() {
           <Grid item key={movie.id} xs={12} sm={6} md={3}>
             <Card>
               <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+              <CardContent>
+                <Typography variant="h6">{movie.title}</Typography>
+                <Typography variant="body2">Price:</Typography>
+                <Button component={Link} >Detail</Button>
+              </CardContent>    
             </Card>
           </Grid>
         ))}
