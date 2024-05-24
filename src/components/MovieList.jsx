@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { fetchNowPlayingMovies } from "../services/api";
 import { Link } from "react-router-dom";
 
-
 function MovieList({ balance }) {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
 
+  // memasukan data movies kedalam state berdasarkan page
   useEffect(() => {
     async function loadMovies() {
       const newMovies = await fetchNowPlayingMovies(page);
@@ -17,10 +17,12 @@ function MovieList({ balance }) {
     loadMovies();
   }, [page]);
 
+  // merubah/menambah nilai page agar bisa men load lebih banyak movie
   function loadMoreMovies() {
     setPage((prevPage) => prevPage + 1);
   }
 
+  // mengatur harga dari movie berdasarkan rating movienya
   function moviePrice(rating) {
     if (rating <= 3) {
       return 3500;
@@ -36,15 +38,15 @@ function MovieList({ balance }) {
   return (
     <Container style={{ margin: "20px" }}>
       <Container style={{ margin: "20px" }}>
-      <Typography fontWeight="bold" variant="h4" gutterBottom>
-        ON GOING
-      </Typography>
-      <Typography margin='10px' fontWeight="bold" variant="h7" gutterBottom>
-        Saldo: Rp. {balance}
-      </Typography>
-      <Button  size="medium" color="secondary" variant="contained" component={Link} to={`/mymovie`}>
-        My Movies
-      </Button>
+        <Typography fontWeight="bold" variant="h4" gutterBottom>
+          ON GOING
+        </Typography>
+        <Typography margin="10px" fontWeight="bold" variant="h7" gutterBottom>
+          Saldo: Rp. {balance}
+        </Typography>
+        <Button size="medium" color="secondary" variant="contained" component={Link} to={`/mymovie`}>
+          My Movies
+        </Button>
       </Container>
       <Grid container spacing={4}>
         {movies.map((movie) => (

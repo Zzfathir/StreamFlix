@@ -4,8 +4,8 @@ import { fetchNowPlayingMovies } from "../services/api";
 import { Link } from "react-router-dom";
 
 function OwnedMovie({ ownedMovies, balance }) {
-  console.log(ownedMovies);
-
+    
+// mengatur harga dari movie berdasarkan rating movienya
   function moviePrice(rating) {
     if (rating <= 3) {
       return 3500;
@@ -27,10 +27,10 @@ function OwnedMovie({ ownedMovies, balance }) {
         Saldo: Rp. {balance}
       </Typography>
 
-      {ownedMovies.length != 0 ? <Grid container spacing={4}>
-
+      {ownedMovies.length != 0 ? (
+        <Grid container spacing={4}>
           {ownedMovies.map((movie) => (
-            <Grid item key={movie.id} xs={12} sm={6} md={8}>
+            <Grid item key={movie.id}>
               <Card>
                 <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
                 <CardContent>
@@ -46,7 +46,11 @@ function OwnedMovie({ ownedMovies, balance }) {
             </Grid>
           ))}
         </Grid>
-      :  <Typography variant="body2">You Don't have a movie yet</Typography> }
+      ) : (
+        <Typography fontWeight="bold" variant="h5">
+          You Don't have a movie yet😥
+        </Typography>
+      )}
     </Container>
   );
 }

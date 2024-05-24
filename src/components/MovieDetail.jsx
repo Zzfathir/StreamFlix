@@ -7,6 +7,7 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
   const { movieId } = useParams();
   const [movie, setMovies] = useState(null);
 
+  // memasukan data detail movie kedalam state berdasarkan id
   useEffect(() => {
     async function loadMovie() {
       const movieData = await fetchMovieDetail(movieId);
@@ -16,6 +17,7 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
     loadMovie();
   }, [movieId]);
 
+  // mengatur harga dari movie berdasarkan rating movienya
   function moviePrice(rating) {
     if (rating <= 3) {
       return 3500;
@@ -28,6 +30,9 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
     }
   }
 
+  // fungsi untuk membeli film
+  // ketika saldo cukup & film belum dimiliki maka bisa beli/kurangi saldo sesuai harga filmnya
+  // memasukan data & id film yang sudah dimiliki
   function handleBuy() {
     const price = moviePrice(movie.vote_average);
     if (balance >= price && !ownedMoviesId.includes(movie.id)) {
@@ -35,10 +40,10 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
       setOwnedMoviesId([...ownedMoviesId, movie.id]);
       setOwnedMovies([...ownedMovies, movie]);
     } else {
-      alert("Saldo tidak cukup atau film sudah dimiliki");
+      alert("Saldo tidak cukup");
     }
   }
-
+  // loading state
   if (!movie) return <div>Loading...</div>;
 
   return (
@@ -55,7 +60,7 @@ function MovieDetail({ balance, setBalance, ownedMovies, setOwnedMovies, ownedMo
               Beli - Rp. {moviePrice(movie.vote_average)}
             </Button>
           ) : (
-            <Typography variant="h6">you already have it✅</Typography>
+            <Typography variant="h6">Successfully owned✅</Typography>
           )}
         </CardContent>
       </Card>
