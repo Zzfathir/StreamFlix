@@ -35,16 +35,17 @@ function MovieList({ balance }) {
 
   return (
     <Container style={{ margin: "20px" }}>
+      <Container style={{ margin: "20px" }}>
       <Typography fontWeight="bold" variant="h4" gutterBottom>
         ON GOING
       </Typography>
-      <Typography fontWeight="bold" variant="h7" gutterBottom>
+      <Typography margin='10px' fontWeight="bold" variant="h7" gutterBottom>
         Saldo: Rp. {balance}
       </Typography>
-      <Button size="medium" color="secondary" variant="contained" component={Link} to={`/mymovie`}>
+      <Button  size="medium" color="secondary" variant="contained" component={Link} to={`/mymovie`}>
         My Movies
       </Button>
-
+      </Container>
       <Grid container spacing={4}>
         {movies.map((movie) => (
           <Grid item key={movie.id} xs={12} sm={6} md={3}>
