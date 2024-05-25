@@ -1,0 +1,28 @@
+/* src/components/MovieDetail.css */
+
+.movie-detail {
+    padding: 20px;
+  }
+  
+  .movie-detail img {
+    width: 300px;
+    height: auto;
+  }
+  
+  .similar-movies, .recommended-movies {
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+  }
+  
+  .similar-movies div, .recommended-movies div {
+    flex-shrink: 0;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .similar-movies img, .recommended-movies img {
+    width: 100%;
+    height: auto;
+  }
+  

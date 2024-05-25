@@ -4,7 +4,8 @@ import { fetchNowPlayingMovies } from "../services/api";
 import { Link } from "react-router-dom";
 
 function OwnedMovie({ ownedMovies, balance }) {
-    
+
+    console.log(ownedMovies)
 // mengatur harga dari movie berdasarkan rating movienya
   function moviePrice(rating) {
     if (rating <= 3) {
@@ -34,7 +35,7 @@ function OwnedMovie({ ownedMovies, balance }) {
               <Card>
                 <CardMedia component="img" image={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
                 <CardContent>
-                  <Typography fontWeight="bold" variant="div">
+                  <Typography width='10vw' fontWeight="bold" variant="body2">
                     {movie.title}
                   </Typography>
                   <Typography variant="body2">Price: Rp. {moviePrice(movie.vote_average)}</Typography>

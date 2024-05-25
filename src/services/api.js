@@ -8,11 +8,15 @@ export async function fetchNowPlayingMovies(page = 1) {
   return data.results;
 }
 
-
 // Fetching Movie Detail
-export async function fetchMovieDetail (movieId) {
-    const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
-    const data = await response.json();
-    return data;
-  };
+export async function fetchMovieDetail(movieId) {
+  const response = await fetch(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`);
+  const data = await response.json();
+  return data;
+}
 
+export async function fetchSimiliarMovies(movieId) {
+  const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${API_KEY}&language=id-ID&page=1`);
+  const data = await response.json();
+  return data.results;
+}
